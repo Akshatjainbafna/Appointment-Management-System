@@ -87,6 +87,24 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/logout', async (req, res) => {
+    try {
+
+        // Authenticate user credentials with Firebase Authentication
+        const userCredential = await admin.auth().signOut(email);
+
+        // Generate a JWT token for authorization (optional)
+        const token = generateJWTToken(userCredential.uid);
+
+        // Send a success response or JWT token for authorization if needed
+        res.cookie('token', token)
+        res.status(200).json({ message: 'User logged out successfully', token });
+    } catch (error) {
+        console.error('Error logging out:', error);
+        res.status(401).json({ error: 'Invalid credentials' });
+    }
+});
+
 // GET ALL THE APPOINTMENTS
 app.get('/appointments', authenticateUser, async (req, res) => {
 
