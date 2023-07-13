@@ -1,4 +1,4 @@
-# Homoeo-Amigo-Assignment
+# Appointment-Management-System
 
 The project is a backend of an appointment management system build using Firebase(Database) and Express.js(Backend Framework). I have used Firebase Authentication to manage authentication and authorisation.
 The project can be cloned and tested using platforms like Postman.
